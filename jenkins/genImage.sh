@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+DMALL_DOCKER_REGISTRY=54.223.92.91:5000
+BUILD_NUMBER=1
+SLUG=jxmall
+
+docker build -t $DMALL_DOCKER_REGISTRY/$SLUG/jenkins:$BUILD_NUMBER .
+docker tag $DMALL_DOCKER_REGISTRY/$SLUG/jenkins:$BUILD_NUMBER $DMALL_DOCKER_REGISTRY/$SLUG/jenkins:latest
+
+docker push $DMALL_DOCKER_REGISTRY/$SLUG/jenkins:$BUILD_NUMBER
+docker push $DMALL_DOCKER_REGISTRY/$SLUG/jenkins:latest
